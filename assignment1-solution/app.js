@@ -20,6 +20,7 @@ function LunchCheckController($scope) {
     if ($scope.items.length == 0) {
       $scope.itemCount = 0;
     } else {
+      items = items.filter(function(item) {return item.trim().length > 0} );
       $scope.itemCount = items.length;
     }
     if ($scope.itemCount == 0) {
