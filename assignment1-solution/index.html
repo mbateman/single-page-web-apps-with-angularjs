@@ -1,7 +1,7 @@
 <!doctype html>
-<html lang="en" ng-app='LunchChecker'>
+<html lang="en" ng-app='LunchCheck'>
   <head>
-    <title>Lunch Checker</title>
+    <title>Lunch Check</title>
     <script src="angular.min.js"></script>
     <script src="app.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,8 +12,8 @@
   </head>
 <body>
    <div class="container">
-     <h1>Lunch Checker</h1>
-     <div ng-controller='LunchCheckerController'>
+     <h1>Lunch Check</h1>
+     <div ng-controller='LunchCheckController'>
          <div class="form-group">
              <input id="lunch-menu" type="text" ng-model="items"
              placeholder="list comma separated dishes you usually have for lunch"
@@ -23,8 +23,7 @@
             <button class="btn btn-default" ng-click="checkIfTooMuch()">Check If Too Much</button>
          </div>
          <div class="form-group message">
-           <!-- Your message can go here. -->
-           You have chosen {{itemCount}} items: {{okOrTooMuch}}
+           You have {{itemCount}} items: {{message}}
          </div>
     </div>
    </div>

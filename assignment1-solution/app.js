@@ -1,27 +1,34 @@
 (function () {
 'use strict';
 
-angular.module('LunchChecker', [])
-.controller('LunchCheckerController', LunchCheckerController);
+angular.module('LunchCheck', [])
+.controller('LunchCheckController', LunchCheckController);
 
-LunchCheckerController.$inject = ['$scope'];
-function LunchCheckerController($scope) {
-  $scope.okOrTooMuch = "";
+LunchCheckController.$inject = ['$scope'];
+function LunchCheckController($scope) {
+  $scope.message = "";
   $scope.itemCount = 0;
   $scope.items = "";
 
   $scope.checkIfTooMuch = function() {
-    $scope.itemCount();
-    console.log($scope.items);
+    $scope.itemCount = 0;
+    $scope.countItems();
   }
 
-  $scope.itemCount = function () {
+  $scope.countItems = function () {
     var items = $scope.items.split(',');
-    $scope.itemCount = items.length;
-    if ($scope.itemCount > 3) {
-      $scope.okOrTooMuch = "Too Much!"
+    if ($scope.items.length == 0) {
+      $scope.itemCount = 0;
     } else {
-      $scope.okOrTooMuch = "Ok!"
+      $scope.itemCount = items.length;
+    }
+    if ($scope.itemCount == 0) {
+      $scope.message = "Please enter data first"
+    } else
+    if ($scope.itemCount > 3) {
+      $scope.message = "Too Much!"
+    } else {
+      $scope.message = "Enjoy!"
     }
   };
 }
