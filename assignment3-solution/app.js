@@ -28,7 +28,7 @@ function MenuSearchService($http, $filter) {
   service.getMatchedMenuItems = function(searchTerm) {
     return $http({
       method: "GET",
-      url: ("http://davids-restaurant.herokuapp.com/menu_items.json")
+      url: ("https://davids-restaurant.herokuapp.com/menu_items.json")
     }).then(function (result) {
         // process result and only keep items that match
         var foundItems = $filter('filter') (result.data.menu_items, searchTerm);
