@@ -1,5 +1,11 @@
-<!-- <div id="list" ng-controller='MainShoppingListController as mainList'> -->
 <a style="font-size:20px" ui-sref="home">Home</a>
 <h3>Menu Categories</h3>
-<categories categories=categoryList.categories</categories>
-<!-- </div> -->
+
+<!-- <ul>
+  <li ng-repeat="category in ctrl.categories"
+    ui-sref="items({categoryShortName: category.short_name})">
+    {{ category.name }}
+  </li>
+</ul> -->
+
+<categories categories="ctrl.categories"></categories>
