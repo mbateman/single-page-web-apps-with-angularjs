@@ -3,8 +3,8 @@
 angular.module('public')
 .controller('RegistrationController', RegistrationController);
 
-RegistrationController.$inject = ['RegistrationService', 'MenuService', '$scope', '$timeout'];
-function RegistrationController(RegistrationService, MenuService, $scope, $timeout) {
+RegistrationController.$inject = ['RegistrationService', 'MenuService', '$scope'];
+function RegistrationController(RegistrationService, MenuService, $scope) {
   var reg = this;
   var last_input;
 
@@ -21,22 +21,16 @@ function RegistrationController(RegistrationService, MenuService, $scope, $timeo
       $scope.results = response;
     });
     var result = $scope.results;
-    var invalid;
-    if (result && result.status) {
-      invalid = true;
-    } else {
-      invalid = false;
-    }
-    return invalid;
+    return true ? result && result.status : false;
   }
 
-  reg.validateShortName = function(short_name, fn) {
+  reg.validateShortName = function(short_name, callback) {
     if (short_name == undefined || short_name.length != 2 || last_input == short_name) return true;
     last_input = short_name;
     MenuService.getMenuItem(short_name).then(function(response){
-      fn(response);
+      callback(response);
     }).catch(function (response) {
-      fn(response);
+      callback(response);
     });
   }
 
