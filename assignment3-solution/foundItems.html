@@ -1,9 +1,10 @@
 <br><br>
 <h3>{{ list.title }}</h3>
 <!-- <h3>Menu Items Found</h3> -->
+<!-- name of the menu item, its short_name, and the description -->
 <ol>
   <li ng-repeat="item in list">
-    {{ item.name }}
+    {{ item.name }}  -  {{ item.short_name }}  -  {{ item.description }}
     <button ng-click="onRemove({ index: $index });">Don't want this one!</button>
   </li>
 </ol>

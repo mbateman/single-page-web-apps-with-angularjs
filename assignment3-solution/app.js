@@ -51,15 +51,20 @@ function NarrowItDownController(MenuSearchService) {
 
   list.title = "Menu Items";
 
-  list.searchTerm = "";
+  list.searchTerm;
 
-  list.searchResult = "";
+  list.searchResult;
 
-  list.getMatchedMenuItems = function (searchTerm) {
+  list.getMatchedMenuItems = function () {
+
+    if (!list.searchTerm || list.searchTerm.length == 0) {
+      list.searchResult = "Please enter a search term";
+      return;
+    }
+
     var promise = MenuSearchService.getMatchedMenuItems(list.searchTerm);
 
     promise.then(function (response) {
-      // console.log(response);
       list.found = response;
       if (list.found.length == 0) {
         list.searchResult = "Nothing found";
