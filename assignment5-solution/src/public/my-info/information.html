@@ -2,28 +2,37 @@
   <meta charset="utf-8">
   <div id="info" ng-if="myInfoCtrl.isRegistered()">
     <h1>Your Information</h1>
-    First Name: {{ myInfoCtrl.reg.user.firstname}} <br>
-    Last Name: {{ myInfoCtrl.reg.user.lastname}} <br>
-    Email: {{ myInfoCtrl.reg.user.email}} <br>
-    Phone: {{ myInfoCtrl.reg.user.phone }} <br>
-    Favourite Dish:<br> 
+    <!-- First Name:   {{ myInfoCtrl.reg.user.firstname}} <br>
+    Last Name:    {{ myInfoCtrl.reg.user.lastname}} <br>
+    Email:        {{ myInfoCtrl.reg.user.email}} <br>
+    Phone:        {{ myInfoCtrl.reg.user.phone }} <br> -->
+    <!-- Favourite Dish:<br> -->
 
-    <div class="menu-item-tile col-md-6">
-      <div class="row">
-        <div class="col-sm-5">
-          <div class="menu-item-photo">
-            <div>{{myInfoCtrl.reg.user.menuItem.short_name}}</div>
-            <img class="img-responsive" width="250" height="150" ng-src="{{myInfoCtrl.basePath}}/images/{{myInfoCtrl.reg.user.menuItem.short_name}}.jpg" alt="{{myInfoCtrl.reg.user.menuItem.name}}">
+    <table ng-table="vm.tableParams" class="table" header-class='text-left'>
+      <tr>
+        <td class='text-left col-xs-1' title="'First Name'">{{ myInfoCtrl.reg.user.firstname}}</td>
+        <td class='text-left col-xs-1' title="'Last Name'">{{ myInfoCtrl.reg.user.lastname}}</td>
+        <td class='text-left col-xs-2' title="'Email'">{{ myInfoCtrl.reg.user.email}}</td>
+        <td class='text-left col-xs-2' title="'Phone'">{{ myInfoCtrl.reg.user.phone}}</td>
+        <td class='text-center col-xs-6' title="'Favourite Dish'">
+          <div class="menu-item-tile col-md-6" style="width:500px; margin:0 auto;">>
+            <div class="col-sm-5">
+              <div class="menu-item-photo">
+                <div>{{myInfoCtrl.reg.user.menuItem.short_name}}</div>
+                <img class="img-responsive" width="250" height="150" ng-src="{{myInfoCtrl.basePath}}/images/{{myInfoCtrl.reg.user.menuItem.short_name}}.jpg" alt="{{myInfoCtrl.reg.user.menuItem.name}}">
+              </div>
+              <div class="menu-item-price">{{myInfoCtrl.reg.user.menuItem.price_small | currency}}<span> {{myInfoCtrl.menuItem.small_portion_name}}</span> {{myInfoCtrl.reg.user.menuItem.price_large | currency}} <span>{{myInfoCtrl.reg.user.menuItem.large_portion_name}}</span></div>
+            </div>
+            <div class="menu-item-description col-sm-7">
+              <h3 class="menu-item-title">{{myInfoCtrl.reg.user.menuItem.name}}</h3>
+              <p class="menu-item-details">{{myInfoCtrl.reg.user.menuItem.description}}</p>
+            </div>
+            <hr class="visible-xs">
           </div>
-          <div class="menu-item-price">{{myInfoCtrl.reg.user.menuItem.price_small | currency}}<span> {{myInfoCtrl.menuItem.small_portion_name}}</span> {{myInfoCtrl.reg.user.menuItem.price_large | currency}} <span>{{myInfoCtrl.reg.user.menuItem.large_portion_name}}</span></div>
-        </div>
-        <div class="menu-item-description col-sm-7">
-          <h3 class="menu-item-title">{{myInfoCtrl.reg.user.menuItem.name}}</h3>
-          <p class="menu-item-details">{{myInfoCtrl.reg.user.menuItem.description}}</p>
-        </div>
-      </div>
-      <hr class="visible-xs">
-    </div>
+        </td>
+      </tr>
+    </table>
+
 
   </div>
 
