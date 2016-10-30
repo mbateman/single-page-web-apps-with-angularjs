@@ -4,7 +4,7 @@
   <h1>Sign Up For Our Newsletter</h1>
   <div id="registration">
     <fieldset>
-      <!-- <legend>Registration</legend> -->
+      <legend>Registration</legend>
       <form name='regForm' novalidate>
         <br><br>
         <input type="text" style="color:navy" name="firstname" placeholder="First Name"
@@ -12,7 +12,6 @@
           required
           minlength="2"
           ng-maxlength="10">
-          <!-- {{ reg.user.firstname }} -->
           <span
             ng-if="(regForm.firstname.$error.minlength || regForm.firstname.$error.required) && regForm.firstname.$touched">
             First must be at least 2 characters long
@@ -27,7 +26,6 @@
           required
           minlength="2"
           ng-maxlength="15">
-          <!-- {{ reg.user.lastname }} -->
           <span
             ng-if="(regForm.lastname.$error.minlength || regForm.lastname.$error.required) && regForm.lastname.$touched">
             Last name must be at least 2 characters long

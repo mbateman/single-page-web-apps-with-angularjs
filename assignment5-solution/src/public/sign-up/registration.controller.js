@@ -17,14 +17,14 @@ function RegistrationController(RegistrationService, MenuService, $scope) {
 
   reg.isShortNameInvalid = function(short_name) {
     var response;
-    reg.validateShortName(short_name, function(response) {
+    reg.getMenuItem(short_name, function(response) {
       $scope.results = response;
     });
     var result = $scope.results;
     return true ? result && result.status : false;
   }
 
-  reg.validateShortName = function(short_name, callback) {
+  reg.getMenuItem = function(short_name, callback) {
     if (short_name == undefined || short_name.length != 2 || last_input == short_name) return true;
     last_input = short_name;
     MenuService.getMenuItem(short_name).then(function(response){
